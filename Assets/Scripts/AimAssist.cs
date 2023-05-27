@@ -24,7 +24,7 @@ public class AimAssist : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask, QueryTriggerInteraction.Ignore))
         {
             Debug.DrawRay(aimAssistPoint.transform.position, aimAssistPoint.transform.TransformDirection(Vector3.forward) * hitInfo.distance, Color.black);
-            if (Input.GetButtonUp("Shoot"))
+            if (Input.GetButtonUp("Shoot") && hitInfo.collider.CompareTag("enemy"))
             {
                 hitInfo.collider.gameObject.GetComponent<Target>().TakeDamage();
             }
